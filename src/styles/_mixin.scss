@@ -1,0 +1,68 @@
+@mixin hover-or-active {
+  // hover-устройства (обычно десктопы с мышью/трекпадом)
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+
+  // touch-устройства без hover (многие смартфоны/планшеты)
+  @media (hover: none) and (pointer: coarse) {
+    &:active {
+      @content;
+    }
+  }
+
+  // keyboard accessibility — показать эффект при фокусе (напр. таб)
+  &:focus-visible {
+    @content;
+  }
+}
+
+@mixin border-and-color($color-border, $color-text: $color-border) {
+  border: 2px solid $color-border;
+  color: $color-text;
+}
+
+@mixin default-style() {
+  --color-main: white;
+  --color-for-focus-effect: black;
+
+  --height: 50px;
+
+  font-size: 20px;
+  font-weight: bold;
+  height: var(--height);
+  background-color: rgba(255, 255, 255, 0.2);
+  @include border-and-color(var(--color-main));
+  border-radius: 7px;
+  transition: all 300ms;
+}
+
+@mixin focus-effect {
+  &:focus {
+    @include hover-or-active {
+      outline: none;
+      box-shadow: inset 0 0 10px 2px var(--color-for-focus-effect);
+      @include border-and-color(var(--color-for-focus-effect));
+    }
+  }
+}
+
+@mixin focus-effect-for-buttons {
+  &:active {
+    scale: 0.9;
+  }
+
+  @include hover-or-active {
+    outline: none;
+    background-color: var(--color-for-focus-effect);
+    @include border-and-color(var(--color-for-focus-effect), var(--color-main));
+  }
+}
+
+@mixin media-468 {
+  @media (max-width: 468px) {
+    @content;
+  }
+}

@@ -1,0 +1,6 @@
+.content {
+  margin-top: 50px;
+  &__form > :nth-child(1n) {
+    margin-bottom: 30px;
+  }
+}

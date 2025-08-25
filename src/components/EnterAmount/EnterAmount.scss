@@ -1,0 +1,15 @@
+@use "../../styles/mixin" as mixin;
+
+.enter-amount {
+  &__text {
+    margin-bottom: 5px;
+  }
+
+  &__input {
+    @include mixin.default-style;
+    @include mixin.focus-effect;
+
+    padding: 0 15px;
+    width: 100%;
+  }
+}

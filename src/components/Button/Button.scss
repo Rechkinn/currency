@@ -1,0 +1,9 @@
+@use "../../styles/mixin" as mixin;
+
+.exchange {
+  @include mixin.default-style;
+  @include mixin.focus-effect-for-buttons;
+  width: 100%;
+  min-height: var(--height);
+  height: auto;
+}

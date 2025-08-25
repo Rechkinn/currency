@@ -1,0 +1,18 @@
+@use "../../styles/mixin" as mixin;
+
+.result {
+  &__inner {
+    @include mixin.default-style;
+    padding: 10px;
+    display: flex;
+    font-size: 26px;
+    width: 100%;
+    height: auto;
+    min-height: calc(var(--height) * 2);
+    justify-content: center;
+    align-items: center;
+  }
+  &__value {
+    text-align: center;
+  }
+}
